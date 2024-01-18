@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}Home Page{% endblock title %}
+    
+{% block body %}
 
-{% block body %}{% endblock body %} 
+    {% for post in posts %}
+
+        {{post.text}} was written at {{post.date}}
+        <hr>
+
+    {% endfor %}
+
+{% endblock body %} 

@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from .models import Post
 
 class HomeView(ListView):
-    template_name = 'homepage.html'
+    template_name = 'feed/homepage.html'
     model = Post
 
     # new options for django201

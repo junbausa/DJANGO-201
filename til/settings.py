@@ -167,3 +167,11 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, "frontend/"),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"

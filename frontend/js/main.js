@@ -27,3 +27,13 @@ $.ajaxSetup({
         }
     },
 });
+
+$(document).on("click", '.js-toggle-modal', function(e){
+    e.preventDefault()
+    
+    // This is for the modal poping up
+    console.log("toggling...")
+    const $post = $(".js-modal") 
+    $post.toggleClass("hidden")
+
+})

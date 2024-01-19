@@ -1,6 +1,6 @@
 # Create your views here.
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 # ccbv.co.uk for django views documentation
 
 # models here
@@ -24,3 +24,12 @@ class PostDetailView(DetailView):
 
     model = Post
     context_object_name = "post" # this refers to context object default is "object"
+
+ # new options for django201. in django101, we used FormView
+class CreateNewPost(CreateView):
+    
+    template_name ='feed/create.html'
+    model = Post 
+
+    # Fields you want to include in form...
+    fields = ['text']

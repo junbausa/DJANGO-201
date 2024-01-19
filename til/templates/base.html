@@ -26,10 +26,10 @@
     <!-- component is from https://tailwindcomponents.com/component/sidebar-navigation -->
 
 <!-- component is from https://tailwindcomponents.com/component/sidebar-navigation -->
-<div class="min-h-screen flex flex-row bg-gray-100">
-    <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
+<div class="min-h-screen flex flex-row bg-gray-100 w-full">
+    <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden w-1/4">
       <div class="flex items-center justify-center h-20 shadow-md">
-        <h1 class="text-3xl uppercase text-indigo-500">LOGO</h1>
+        <h1 class="text-3xl uppercase text-indigo-500">MyApp</h1>
       </div>
       <ul class="flex flex-col py-4">
         <li>
@@ -55,7 +55,7 @@
         {% endif %}
       </ul>
     </div>
-    <div class="p-16">
+    <div class="p-16 w-full">
       {% block body %}
           {% block content %}{% endblock %}
       {% endblock %} 

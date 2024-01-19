@@ -36,3 +36,23 @@ class CreateNewPost(LoginRequiredMixin,CreateView):
 
     # Fields you want to include in form...
     fields = ['text']
+
+    # CreateViews require success URLS
+    success_url='/'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        return super().dispatch(request, *args, **kwargs)
+    
+
+    def form_valid(self, form):
+        # Grab form but no save
+        obj = form.save(commit = False)
+        obj.author = self.request.user
+
+        obj.save()
+
+        return super().form_valid(form)
+    
+    
+    

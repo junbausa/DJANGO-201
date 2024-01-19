@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Create New Post{% endblock title %}Create New Post
+{% block title %}Create a new post{% endblock title %}
 
 {% block body %}
- 
+    <form method="POST" action="." class="py-20">
+        {% csrf_token %}
         {{ form.as_p }}
+        <div>
+            <div class="my-3">
+                <button type="submit"
+                    class="relative flex justify-center w-100 px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent border-solid rounded-md group hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                    
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
  
+                    </span>
+                    Create Post
+                </button>
+            </div>
+        </div>
+    </form>
 {% endblock body %}

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'profiles',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
+    'sorl.thumbnail'
 
 ]
 

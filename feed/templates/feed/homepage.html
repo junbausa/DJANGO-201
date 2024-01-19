@@ -20,10 +20,9 @@
         <p class="mt-2 text-gray-600">{{post.text}}</p>
     </div>
     <div class="flex justify-between items-center mt-4">
-        <a class="text-blue-600 hover:underline" href="#">
-            <!-- TODO : Add detail URL-->
-        </a>
+        <a class="text-blue-600 hover:underline" href="{% url "feed:detail" post.id %}">Read more</a>
         <div>
+            <!-- TODO : Add URL-->
             <a class="flex items-center" href="#">
                 
                 <h1 class="text-gray-700 font-bold">

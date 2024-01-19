@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% comment %} {% extends "allauth/layouts/base.html" %} {% endcomment %}
+{% load i18n %}
+{% block body %}
+    {% if messages %}
+        <div>
+            {% trans "" %}
+            <strong>{% trans "Messages:" %}</strong>
+            <ul>
+                {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% block content %}
+    {% endblock content %}
+{% endblock body %}
+
+ 

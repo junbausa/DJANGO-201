@@ -6,6 +6,9 @@ from django.views.generic import ListView, DetailView, CreateView
 # models here
 from .models import Post
 
+# this will check if user is logged in or not. For Tasks that has database updates
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 class HomeView(ListView):
     template_name = 'feed/homepage.html'
     model = Post
@@ -26,7 +29,7 @@ class PostDetailView(DetailView):
     context_object_name = "post" # this refers to context object default is "object"
 
  # new options for django201. in django101, we used FormView
-class CreateNewPost(CreateView):
+class CreateNewPost(LoginRequiredMixin,CreateView):
     
     template_name ='feed/create.html'
     model = Post 

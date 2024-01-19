@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'feed',
+    'profiles',
     'allauth',
     'allauth.account',
     'allauth.socialaccount'

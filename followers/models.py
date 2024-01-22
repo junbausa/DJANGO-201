@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Followers(models.Model):
+class Follower(models.Model):
     # User = Standard Django User
     # user = User
     followed_by = models.ForeignKey(

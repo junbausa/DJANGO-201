@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class ProfileDetailView(DetailView):
     
     http_method_names = ['get']     # Default method = get
-    template_name = 'profile/profile.html'
+    template_name = 'profiles/detail.html'
 
     model = User # from django.contrib.auth.models
     context_object_name = "user"

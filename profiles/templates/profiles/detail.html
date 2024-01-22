@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% comment %} Load Thumbnail as per docs {% endcomment %}
+{% load thumbnail %}
+
+{% block title %}{{ user.username }}{% endblock title %}
+
+{% block body %}
+
+<!-- component -->
+<html>
+    <head>
+        <link rel="stylesheet" href="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/css/main.ad49aa9b.css" />
+    </head>
+    <body >
+        <div class="flex flex-col justify-center items-center h-[100vh]">
+            <div class="relative flex flex-col items-center rounded-[20px] w-[400px] mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none">
+                <div class="relative flex h-32 w-full justify-center rounded-xl bg-cover" >
+                    <img src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' class="absolute flex h-32 w-full justify-center rounded-xl bg-cover"> 
+                    <div class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                      
+                        {% thumbnail user.profile.image "373x373" crop="center" as im %}
+                            <img class="h-full w-full rounded-full" src={{ im.url }} alt="profile" />
+                        {% endthumbnail %}                          
+
+                    </div>
+                </div> 
+                <div class="mt-16 flex flex-col items-center">
+                    <h4 class="text-xl font-bold text-navy-700 dark:text-white">
+                    {{ user.username }}
+                    </h4>
+                    <p class="text-base font-normal text-gray-600">
+                        {{ user.first_name }}
+                        {{ user.last_name }}
+                    </p>
+                </div> 
+                <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-2xl font-bold text-navy-700 dark:text-white">
+                        XX {# TODO Add total posts #}
+                    </p>
+                    <p class="text-sm font-normal text-gray-600">Posts</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-2xl font-bold text-navy-700 dark:text-white">
+                        9.7K {# TODO Add total followers #}
+                    </p>
+                    <p class="text-sm font-normal text-gray-600">Followers</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                    <p class="text-2xl font-bold text-navy-700 dark:text-white">
+                        434
+                    </p>
+                    <p class="text-sm font-normal text-gray-600">Following</p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </body>
+</html>
+
+{% endblock body %}
+

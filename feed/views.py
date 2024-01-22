@@ -1,5 +1,7 @@
 # Create your views here.
 
+from typing import Any
+from django.http import HttpRequest, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView
 # ccbv.co.uk for django views documentation
 
@@ -8,6 +10,8 @@ from .models import Post
 
 # this will check if user is logged in or not. For Tasks that has database updates
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.shortcuts import render
 
 class HomeView(ListView):
     template_name = 'feed/homepage.html'
@@ -30,6 +34,7 @@ class PostDetailView(DetailView):
 
  # new options for django201. in django101, we used FormView
 class CreateNewPost(LoginRequiredMixin,CreateView):
+    # LoginRequiredMixin = ensures user is logged in
     
     template_name ='feed/create.html'
     model = Post 
@@ -54,5 +59,29 @@ class CreateNewPost(LoginRequiredMixin,CreateView):
 
         return super().form_valid(form)
     
+    def post(self, request, *args: str, **kwargs: Any):
+        
+        # similar to django101 but mapping of data is from AJAX post request
+        post = Post.objects.create(
+            # from AJAX request
+            text = request.POST.get("text"),
+            author = request.user
+        )
+
+        # this is to override the standard POST request success_url='/' 
+        return render(
+            # HTTP request
+            request,
+            # string as html
+            "includes/post.html",
+            # context parameters of includes/post (post and show_detail_view)
+            # {% include "includes/post.html" with post=post show_detail_view=True %}
+            {
+                "post": post,
+                "show_detail_view": True
+            },
+            # content type
+            content_type="application/html",
+        )
     
     

@@ -25,9 +25,12 @@ from django.urls import re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from profiles import urls as profile_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(feeds_urls, namespace = 'feed')),
+    path('profile/', include(profile_urls, namespace = 'profiles')),
     re_path('', include("allauth.urls"))
 ]
 

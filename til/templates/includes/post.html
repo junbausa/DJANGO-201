@@ -20,8 +20,7 @@
             <span></span>
         {% endif %}
         <div>
-            <!-- TODO : Add detail URL-->
-            <a class="flex items-center" href="#">
+            <a class="flex items-center" href="{% url "profiles:detail" post.author.username %}">
                 <h1 class="text-gray-700 font-bold">
                     {{post.author.profile.user}}
                 </h1>

@@ -21,7 +21,11 @@ class ProfileDetailView(DetailView):
     slug_field = "username"
     # from urls.py urlpatterns
     slug_url_kwarg = "username"
-
+    
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        return super().dispatch(request, *args, **kwargs)
+    
     def get_context_data(self, **kwargs):
 
         # user = username (slug field / slug url)
@@ -30,6 +34,9 @@ class ProfileDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["total_posts"] = Post.objects.filter(author = user ).count()
         # TODO Add total followers
+
+        if self.request.user.is_authenticated:
+            context['you_follow'] = Follower.objects.filter(following=user, followed_by=self.request.user).exists()
         return context
     
 class FollowView(LoginRequiredMixin,View):

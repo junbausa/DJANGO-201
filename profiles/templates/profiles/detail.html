@@ -40,10 +40,16 @@
                     js-follow"
                     {% comment %} Ajax here {% endcomment %}
                     data-username={{ user.username }}
-                    data-action="follow"
+                    data-action="{% if you_follow %}un{% endif %}follow"
                     data-url={% url "profiles:follow" user.username %}
                     > 
-                    <span class="js-follow-text">Follow</span>
+                    <span class="js-follow-text">
+                        {% if you_follow %}
+                            Unfollow
+                        {% else %}
+                            Follow
+                        {% endif %}
+                    </span>
                     </button>
                 
                     {% endif %}
